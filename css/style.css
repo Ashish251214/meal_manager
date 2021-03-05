@@ -1,0 +1,75 @@
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container .btns{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.container .btns span{
+    padding: 4px 9px;
+    background-color: #fefefe;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    user-select: none;
+}
+.inner_container,.second_page,.third_page{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.inner_container label,.second_page label,.third_page label{
+    display: block;
+    padding: 10px 0;
+}
+
+.inner_container select,input[type="number"],.second_page select,.third_page select,.last_page{
+    padding: 4px 10px;
+    font-size: 16px;
+    width: 200px;
+}
+
+.inner_container input[type="button"],.second_page .second_page_btns,.last_page .last_page_btns button{
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    cursor: pointer;
+}
+.second_page .second_page_btns,.third_page_btns,.last_page .last_page_btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.third_page .addMore button{
+    outline: none;
+    background-color: transparent;
+    border: 3px solid black;
+    padding: 10px 12px;
+    border-radius: 50%;
+}
+
+.sameSelect{
+    display: flex;
+    gap: 3rem;
+}
+
+.third_page_btns{
+    padding-top: 20px;
+}
+
+.third_page .addMore button{
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.last_page{
+    display: block;
+    margin: 0 auto;
+}
+
+.hide{
+    display: none;
+}

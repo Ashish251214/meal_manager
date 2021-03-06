@@ -1,3 +1,8 @@
+// btns
+let first_Span = document.querySelector(".first_span");
+let second_span = document.querySelector(".second_span");
+let third_span = document.querySelector(".third_span");
+let last_span = document.querySelector(".last_span");
 // first page
 let first_page = document.querySelector(".first_page");
 let mealSelect = document.getElementById("mealSelect");
@@ -44,6 +49,8 @@ document.querySelector(".nextBtn_one").addEventListener("click", () => {
         }else if(noPeople.value >= 1 && noPeople.value <= 5){
             first_page.classList.add("hide");
             second_page.classList.remove("hide");
+            first_Span.classList.remove("color_class");
+            second_span.classList.add("color_class");
         }else{
             alert("Please Select In Between 1 to 5");
         }
@@ -76,7 +83,13 @@ document.querySelector(".nextBtn_one").addEventListener("click", () => {
             selectRest.appendChild(createDinnerOption);
         }
     }
-    // selectRest.appendChild(createBlankOption);
+    var createBlankOption = document.createElement("option");
+    createBlankOption.setAttribute("selected","true");
+    createBlankOption.setAttribute("disabled","false");
+    createBlankOption.setAttribute("value","");
+    var createHiffen = document.createTextNode("---");
+    createBlankOption.appendChild(createHiffen);
+    selectRest.prepend(createBlankOption);
 });
 // implimentation for second page
 // second next page button
@@ -87,6 +100,8 @@ document.querySelector(".secondBtnNext").addEventListener("click", () => {
     }else{
         second_page.classList.add("hide");
         third_page.classList.remove("hide");
+        second_span.classList.remove("color_class");
+        third_span.classList.add("color_class");
     }
     // check wheather there is any content or not
     //remove all the element (option) if there is , from selectDishes
@@ -220,6 +235,14 @@ document.querySelector(".secondBtnNext").addEventListener("click", () => {
             selectDish.appendChild(createDinnerOgOption);
         }
     }
+    // creating blank option
+    var createBlankOption = document.createElement("option");
+    createBlankOption.setAttribute("selected","true");
+    createBlankOption.setAttribute("disabled","false");
+    createBlankOption.setAttribute("value","");
+    var createHiffen = document.createTextNode("---");
+    createBlankOption.appendChild(createHiffen);
+    selectDish.prepend(createBlankOption);
 });
 // second previous page button
 document.querySelector(".secondBtnPrev").addEventListener("click", () => {
@@ -229,35 +252,21 @@ document.querySelector(".secondBtnPrev").addEventListener("click", () => {
 
 //  third page 
 document.querySelector(".thirdNextBtn").addEventListener("click", () => {
-    if(selectDish.value == "" && selectDish.value == null){
+    if(selectDish.value == "" || selectDish.value == null){
         alert("Please Select Any Dish");
-    }else if(selectSer.value == "" && selectDish.value == null){
-        alert("Please Select No of Servings");
     }else{
-        third_page.classList.add("hide");
-        last_page.classList.remove("hide");
+        if(selectSer.value == "" || selectSer.value == null){
+            alert("Please Select No of Servings");
+        }else{
+            if(selectSer.value >= 1 && selectSer.value <= 5){
+                third_page.classList.add("hide");
+                last_page.classList.remove("hide");
+                third_span.classList.remove("color_class");
+                last_span.classList.add("color_class");   
+            }
+            else{
+                alert("PLease Enter Between 1 to 5");
+            }
+        }
     }
 });
-
-
-// function createmealSelectOption(){
-//     var createBlankOption = document.createElement("option");
-//     createBlankOption.setAttribute("selected","true");
-//     createBlankOption.setAttribute("disabled","false");
-//     var createHiffen = document.createTextNode("---");
-//     createBlankOption.appendChild(createHiffen);
-//     mealSelect.appendChild(createBlankOption);
-
-    // selectRest.appendChild(createBlankOption);
-// }
-// function createselectRestOption(){
-//     var createBlankOption = document.createElement("option");
-//     createBlankOption.setAttribute("selected","true");
-//     createBlankOption.setAttribute("disabled","false");
-//     var createHiffen = document.createTextNode("---");
-//     createBlankOption.appendChild(createHiffen);
-//     mealSelect.appendChild(createBlankOption);
-
-    // selectRest.appendChild(createBlankOption);
-// }
-// window.onload = createselectRestOption;

@@ -11,15 +11,16 @@
 <body>
     <div class="container">
         <div class="btns">
-            <span>Step 1</span>
-            <span>Step 2</span>
-            <span>Step 3</span>
-            <span>Review</span>
+            <span class="first_span color_class">Step 1</span>
+            <span class="second_span">Step 2</span>
+            <span class="third_span">Step 3</span>
+            <span class="last_span">Review</span>
         </div>
         <div class="inner_container first_page">
             <form action="">
                 <label for="mealSelect">Please Select a meal</label>
                 <select name="selectMeal" id="mealSelect">
+                    <option value="" selected disabled>---</option>
                     <option value="breakFast">Breakfast</option>
                     <option value="lunch">Lunch</option>
                     <option value="dinner">Dinner</option>
@@ -65,8 +66,8 @@
         <div class="last_page hide">
             <form action="">
                 <div class="last_page_btns">
-                    <input type="button" value="Previous">
-                    <input type="button" value="Next">
+                    <input type="button" value="Previous" class="lastPrevBtn">
+                    <input type="button" value="Next" class="lastNextBtn">
                 </div>
             </form>
         </div>

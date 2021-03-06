@@ -73,3 +73,8 @@
 .hide{
     display: none;
 }
+
+.color_class{
+    background-color: rgb(59, 45, 255) !important;
+    color: #fff;
+}

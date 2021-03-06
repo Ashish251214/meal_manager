@@ -16,6 +16,8 @@ let selectDish = document.getElementById("selectDish");
 let selectSer = document.getElementById("selectSer");
 // last-page
 let last_page = document.querySelector(".last_page");
+// review_page
+let review_page = document.querySelector(".review_page");
 // all rest
 let breakfastRest = ['Mc Donalds','Vege Deli','Olive Garden'];
 let lunchRest = ['Mc Donalds','Taco Bell','Vege Deli','Pizzeria','Panda Express','Olive Garden'];
@@ -265,8 +267,19 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
                 last_span.classList.add("color_class");   
             }
             else{
-                alert("PLease Enter Between 1 to 5");
+                alert("Please Enter Between 1 to 5");
             }
         }
     }
+});
+
+// last page
+document.querySelector(".lastNextBtn").addEventListener("click", () => {
+    last_page.classList.add("hide");
+    review_page.classList.remove("hide");
+    
+});
+document.querySelector(".lastPrevBtn").addEventListener("click", () => {
+    last_page.classList.add("hide");
+    third_page.classList.remove("hide");
 });

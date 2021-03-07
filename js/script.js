@@ -274,6 +274,13 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
         }
     }
 });
+// add more option in third page 
+document.querySelector(".addMore_btn").addEventListener("click",() => {
+    let sameAddMore = document.querySelector(".sameSelect");
+    let cloneAddMore = sameAddMore.cloneNode(true);
+    sameAddMore.appendChild(cloneAddMore);
+});
+
 document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
     third_page.classList.add("hide");
     second_page.classList.remove("hide");

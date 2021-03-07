@@ -276,9 +276,12 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
 });
 // add more option in third page 
 document.querySelector(".addMore_btn").addEventListener("click",() => {
-    let sameAddMore = document.querySelector(".sameSelect");
-    let cloneAddMore = sameAddMore.cloneNode(true);
-    sameAddMore.appendChild(cloneAddMore);
+    // var counterId = 1;
+    // counterId++;
+    // let createAddMoreSelect = document.createElement("select");
+    // let createAddMoreAtrribute = createAddMoreSelect.setAttribute("id",`addMoreDish${counterId}`);
+    // let getIDAddMore = document.querySelector(`addMoreDish${counterId}`);
+    
 });
 
 document.querySelector(".thirdPrevBtn").addEventListener("click", () => {

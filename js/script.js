@@ -250,6 +250,8 @@ document.querySelector(".secondBtnNext").addEventListener("click", () => {
 document.querySelector(".secondBtnPrev").addEventListener("click", () => {
     second_page.classList.add("hide");
     first_page.classList.remove("hide");
+    second_span.classList.remove("color_class");
+    first_Span.classList.add("color_class");
 });
 
 //  third page 
@@ -272,14 +274,21 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
         }
     }
 });
+document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
+    third_page.classList.add("hide");
+    second_page.classList.remove("hide");
+    third_span.classList.remove("color_class");
+    second_span.classList.add("color_class");
+});
 
 // last page
 document.querySelector(".lastNextBtn").addEventListener("click", () => {
     last_page.classList.add("hide");
-    review_page.classList.remove("hide");
-    
+    review_page.classList.remove("hide"); 
 });
 document.querySelector(".lastPrevBtn").addEventListener("click", () => {
     last_page.classList.add("hide");
     third_page.classList.remove("hide");
+    third_span.classList.add("color_class");
+    last_span.classList.remove("color_class");
 });

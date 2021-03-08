@@ -276,11 +276,11 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
 });
 // add more option in third page 
 document.querySelector(".addMore_btn").addEventListener("click",() => {
-    // var counterId = 1;
-    // counterId++;
-    // let createAddMoreSelect = document.createElement("select");
-    // let createAddMoreAtrribute = createAddMoreSelect.setAttribute("id",`addMoreDish${counterId}`);
-    // let getIDAddMore = document.querySelector(`addMoreDish${counterId}`);
+     var counterId = 1;
+     counterId++;
+     let createAddMoreSelect = document.createElement("select");
+     let createAddMoreAtrribute = createAddMoreSelect.setAttribute("id",`addMoreDish${counterId}`);
+     let getIDAddMore = document.querySelector(`addMoreDish${counterId}`);
     
 });
 

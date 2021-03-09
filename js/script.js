@@ -1,3 +1,5 @@
+// global veriable
+let dishBlankArray = [];
 // btns
 let first_Span = document.querySelector(".first_span");
 let second_span = document.querySelector(".second_span");
@@ -245,6 +247,14 @@ document.querySelector(".secondBtnNext").addEventListener("click", () => {
     var createHiffen = document.createTextNode("---");
     createBlankOption.appendChild(createHiffen);
     selectDish.prepend(createBlankOption);
+
+    // get element of select dish
+    let getValuesDish = document.querySelector("#selectDish").children;
+    for(var i=1;i<getValuesDish.length;i++){
+        var attValue = getValuesDish[i].getAttribute('value');
+        dishBlankArray.push(attValue);
+    }
+    console.log(dishBlankArray);
 });
 // second previous page button
 document.querySelector(".secondBtnPrev").addEventListener("click", () => {
@@ -276,12 +286,34 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
 });
 // add more option in third page 
 document.querySelector(".addMore_btn").addEventListener("click",() => {
-     var counterId = 1;
-     counterId++;
-     let createAddMoreSelect = document.createElement("select");
-     let createAddMoreAtrribute = createAddMoreSelect.setAttribute("id",`addMoreDish${counterId}`);
-     let getIDAddMore = document.querySelector(`addMoreDish${counterId}`);
-    
+    let arrayLengthBlankArray = dishBlankArray.length;
+    alert("Array me " + arrayLengthBlankArray + " element hai");
+    let createAddDish = selectDish.cloneNode();
+    for(var i=0;i<dishBlankArray.length;i++){
+        let checkPreviousItemValue = document.querySelector("#selectDish").value;
+        let getIndexPreviousItem = dishBlankArray.indexOf(checkPreviousItemValue);
+        console.log(checkPreviousItemValue);
+        console.log(getIndexPreviousItem);
+        dishBlankArray.splice(getIndexPreviousItem, 1);
+        console.log(dishBlankArray);
+        if(arrayLengthBlankArray > 1){
+            let createAddMoreOption = document.createElement("option");
+            createAddMoreOption.setAttribute("value",`${dishBlankArray[i]}`);
+            let createAddMoreText = document.createTextNode(`${dishBlankArray[i]}`);
+            createAddMoreOption.appendChild(createAddMoreText);
+            createAddDish.appendChild(createAddMoreOption);
+        }else{
+            alert("not enough item!!");
+        }
+    }
+    if(arrayLengthBlankArray > 1){
+        let AddMoreSelectSer = document.createElement("input");
+        AddMoreSelectSer.setAttribute("type","number");
+        AddMoreSelectSer.setAttribute("min","1");
+        AddMoreSelectSer.setAttribute("max","5");
+        document.querySelector(".sameSelect").append(createAddDish);
+        document.querySelector(".sameSelect").append(AddMoreSelectSer);
+    }
 });
 
 document.querySelector(".thirdPrevBtn").addEventListener("click", () => {

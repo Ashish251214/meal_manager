@@ -1,5 +1,6 @@
 // global veriable
 let dishBlankArray = [];
+let checkPreviousItemValue;
 // btns
 let first_Span = document.querySelector(".first_span");
 let second_span = document.querySelector(".second_span");
@@ -286,43 +287,49 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
 });
 // add more option in third page 
 document.querySelector(".addMore_btn").addEventListener("click",() => {
-    let arrayLengthBlankArray = dishBlankArray.length;
-    alert("Array me " + arrayLengthBlankArray + " element hai");
-    let createAddDish = selectDish.cloneNode();
-    for(var i=0;i<dishBlankArray.length;i++){
-        let checkPreviousItemValue = document.querySelector("#selectDish").value;
+    if(selectDish.value == "" || selectDish == null){
+        alert("Please Select first dish!");
+    }else{
+        let arrayLengthBlankArray = dishBlankArray.length;
+        let createAddDish = selectDish.cloneNode();
+        let checkLastClass = document.getElementsByClassName("checkLastClass");
+        for(var i=0; i < checkLastClass.length; i++){
+            checkPreviousItemValue = checkLastClass[i].value;
+        }
         let getIndexPreviousItem = dishBlankArray.indexOf(checkPreviousItemValue);
-        console.log(checkPreviousItemValue);
-        console.log(getIndexPreviousItem);
         dishBlankArray.splice(getIndexPreviousItem, 1);
-        console.log(dishBlankArray);
-        if(arrayLengthBlankArray > 1){
-            let createAddMoreOption = document.createElement("option");
-            createAddMoreOption.setAttribute("value",`${dishBlankArray[i]}`);
-            let createAddMoreText = document.createTextNode(`${dishBlankArray[i]}`);
-            createAddMoreOption.appendChild(createAddMoreText);
-            createAddDish.appendChild(createAddMoreOption);
+        if(dishBlankArray.length > 0){
+            for(var i=0;i<dishBlankArray.length;i++){
+                if(arrayLengthBlankArray > 0){
+                    let createAddMoreOption = document.createElement("option");
+                    createAddMoreOption.setAttribute("value",`${dishBlankArray[i]}`);
+                    let createAddMoreText = document.createTextNode(`${dishBlankArray[i]}`);
+                    createAddMoreOption.appendChild(createAddMoreText);
+                    createAddDish.appendChild(createAddMoreOption);
+                }else{
+                    alert("not enough item!!");
+                }
+            }
         }else{
             alert("not enough item!!");
         }
+        if(arrayLengthBlankArray > 1){
+            let AddMoreSelectSer = document.createElement("input");
+            AddMoreSelectSer.setAttribute("type","number");
+            AddMoreSelectSer.setAttribute("min","1");
+            AddMoreSelectSer.setAttribute("max","5");
+            document.querySelector(".sameSelect").append(createAddDish);
+            document.querySelector(".sameSelect").append(AddMoreSelectSer);
+        }
     }
-    if(arrayLengthBlankArray > 1){
-        let AddMoreSelectSer = document.createElement("input");
-        AddMoreSelectSer.setAttribute("type","number");
-        AddMoreSelectSer.setAttribute("min","1");
-        AddMoreSelectSer.setAttribute("max","5");
-        document.querySelector(".sameSelect").append(createAddDish);
-        document.querySelector(".sameSelect").append(AddMoreSelectSer);
-    }
+    // review page data showing
 });
-
 document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
     third_page.classList.add("hide");
     second_page.classList.remove("hide");
     third_span.classList.remove("color_class");
     second_span.classList.add("color_class");
 });
-
 // last page
 document.querySelector(".lastNextBtn").addEventListener("click", () => {
     last_page.classList.add("hide");

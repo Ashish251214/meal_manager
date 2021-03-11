@@ -85,6 +85,8 @@
 .last_page{
     display: block;
     margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
 }
 
 .hide{
@@ -107,6 +109,7 @@ table{
     padding: 30px 0 0 0;
     font-size: 17px;
     font-weight: bold;
+    width: 100%;
 }
 
 .specials_border,.same_data{

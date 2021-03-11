@@ -264,27 +264,6 @@ document.querySelector(".secondBtnPrev").addEventListener("click", () => {
     second_span.classList.remove("color_class");
     first_Span.classList.add("color_class");
 });
-
-//  third page 
-document.querySelector(".thirdNextBtn").addEventListener("click", () => {
-    if(selectDish.value == "" || selectDish.value == null){
-        alert("Please Select Any Dish");
-    }else{
-        if(selectSer.value == "" || selectSer.value == null){
-            alert("Please Select No of Servings");
-        }else{
-            if(selectSer.value >= 1 && selectSer.value <= 5){
-                third_page.classList.add("hide");
-                last_page.classList.remove("hide");
-                third_span.classList.remove("color_class");
-                last_span.classList.add("color_class");   
-            }
-            else{
-                alert("Please Enter Between 1 to 5");
-            }
-        }
-    }
-});
 // add more option in third page 
 document.querySelector(".addMore_btn").addEventListener("click",() => {
     if(selectDish.value == "" || selectDish == null){
@@ -316,13 +295,48 @@ document.querySelector(".addMore_btn").addEventListener("click",() => {
         if(arrayLengthBlankArray > 1){
             let AddMoreSelectSer = document.createElement("input");
             AddMoreSelectSer.setAttribute("type","number");
+            AddMoreSelectSer.setAttribute("class","selectSers");
             AddMoreSelectSer.setAttribute("min","1");
             AddMoreSelectSer.setAttribute("max","5");
             document.querySelector(".sameSelect").append(createAddDish);
             document.querySelector(".sameSelect").append(AddMoreSelectSer);
         }
     }
+});
+//  third page 
+document.querySelector(".thirdNextBtn").addEventListener("click", () => {
+    if(selectDish.value == "" || selectDish.value == null){
+        alert("Please Select Any Dish");
+    }else{
+        if(selectSer.value == "" || selectSer.value == null){
+            alert("Please Select No of Servings");
+        }else{
+            if(selectSer.value >= 1 && selectSer.value <= 5){
+                third_page.classList.add("hide");
+                last_page.classList.remove("hide");
+                third_span.classList.remove("color_class");
+                last_span.classList.add("color_class");   
+            }
+            else{
+                alert("Please Enter Between 1 to 5");
+            }
+        }
+    }
+
     // review page data showing
+    document.querySelector(".putMeal").innerHTML = mealSelect.value;
+    document.querySelector(".putNoPeople").innerHTML = noPeople.value;
+    document.querySelector(".putRest").innerHTML = selectRest.value;
+    checkLastClass = document.getElementsByClassName("checkLastClass");
+    let selectSers = document.querySelectorAll(".selectSers");
+    let putDishName = document.querySelectorAll(".putDishName");
+    let putDishNo = document.querySelectorAll(".putDishNo");
+    for(var i=0;i < checkLastClass.length;i++){
+        putDishName[i].innerHTML = checkLastClass[i].value; 
+    }
+    for(var i=0;i < selectSers.length;i++){
+        putDishNo[i].innerHTML = selectSers[i].value; 
+    }
 });
 document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
     third_page.classList.add("hide");

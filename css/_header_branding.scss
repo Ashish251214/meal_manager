@@ -1,0 +1,67 @@
+// font-family: 'Rancho', cursive;
+// Regards to inform you that, i can not continue my service further due to my personal reason. kindly releave me as early as possible and please hand over my cheque and bond.
+// Thanks and Regards...
+// Ashish Kumar 
+.header_branding{
+    background: url(../images/home_banner.jpg);
+    @include background();
+    .social_header{
+        background-color: $primary;
+        font-family: 'Merriweather Sans', sans-serif;
+        font-weight: normal;
+        padding: 6px 0;
+        .col-md-6{
+            &:first-child{
+                span{
+                    a{
+                        color: var(--light);
+                    }
+                    &:first-child{
+                        margin-right: 30px;
+                    }
+                }
+            }
+            i{
+                padding: 0 3px;
+            }
+            &:last-child{
+                .social_header_icons{
+                    padding-right: 10px;
+                    border-right: 1px solid var(--light);
+                    a{
+                        color: var(--light);
+                        i{
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                span{
+                    padding-left: 10px;
+                    a{
+                        color: var(--light);
+                    }
+                }
+            }
+        }
+    }
+    // navigation_bar
+    .navigation_bar{
+        .flexible{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .navigation_bar-logo{
+                flex: 1;
+            }
+            nav{
+                flex: 5;
+                ul{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    list-style: none;
+                }
+            }
+        }
+    }
+}

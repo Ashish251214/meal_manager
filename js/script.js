@@ -1,6 +1,8 @@
 // global veriable
 let dishBlankArray = [];
 let checkPreviousItemValue;
+var e;
+// let checkOptions;
 // btns
 let first_Span = document.querySelector(".first_span");
 let second_span = document.querySelector(".second_span");
@@ -264,42 +266,56 @@ document.querySelector(".secondBtnPrev").addEventListener("click", () => {
     second_span.classList.remove("color_class");
     first_Span.classList.add("color_class");
 });
-// add more option in third page 
+// add more option in third page
 document.querySelector(".addMore_btn").addEventListener("click",() => {
+    var selectSers = document.querySelectorAll(".selectSers");
     if(selectDish.value == "" || selectDish == null){
         alert("Please Select first dish!");
     }else{
-        let arrayLengthBlankArray = dishBlankArray.length;
-        let createAddDish = selectDish.cloneNode();
-        let checkLastClass = document.getElementsByClassName("checkLastClass");
-        for(var i=0; i < checkLastClass.length; i++){
-            checkPreviousItemValue = checkLastClass[i].value;
+        for(var j = 0; j < selectSers.length; j++){
+            var checklastServing = selectSers[j].value;
         }
-        let getIndexPreviousItem = dishBlankArray.indexOf(checkPreviousItemValue);
-        dishBlankArray.splice(getIndexPreviousItem, 1);
-        if(dishBlankArray.length > 0){
-            for(var i=0;i<dishBlankArray.length;i++){
-                if(arrayLengthBlankArray > 0){
-                    let createAddMoreOption = document.createElement("option");
-                    createAddMoreOption.setAttribute("value",`${dishBlankArray[i]}`);
-                    let createAddMoreText = document.createTextNode(`${dishBlankArray[i]}`);
-                    createAddMoreOption.appendChild(createAddMoreText);
-                    createAddDish.appendChild(createAddMoreOption);
-                }else{
-                    alert("not enough item!!");
+        if(checklastServing != "" || checklastServing != 0){
+            let arrayLengthBlankArray = dishBlankArray.length;
+            let createAddDish = selectDish.cloneNode();
+            let checkLastClass = document.getElementsByClassName("checkLastClass");
+            for(var i=0; i < checkLastClass.length; i++){
+                checkPreviousItemValue = checkLastClass[i].value;
+                e = checkLastClass[i].childNodes;
+                for(var j=0; j< e.length; j++){
+                    if(e[j].value != checkPreviousItemValue){
+                        e[j].setAttribute("disabled","true");
+                    }
                 }
             }
+            let getIndexPreviousItem = dishBlankArray.indexOf(checkPreviousItemValue);
+            dishBlankArray.splice(getIndexPreviousItem, 1);
+            if(dishBlankArray.length > 0){
+                for(var i=0;i<dishBlankArray.length;i++){
+                    if(arrayLengthBlankArray > 0){
+                        let createAddMoreOption = document.createElement("option");
+                        createAddMoreOption.setAttribute("value",`${dishBlankArray[i]}`);
+                        let createAddMoreText = document.createTextNode(`${dishBlankArray[i]}`);
+                        createAddMoreOption.appendChild(createAddMoreText);
+                        createAddDish.appendChild(createAddMoreOption);
+                    }else{
+                        alert("not enough item!!");
+                    }
+                }
+            }else{
+                alert("not enough item!!");
+            }
+            if(arrayLengthBlankArray > 1){
+                let AddMoreSelectSer = document.createElement("input");
+                AddMoreSelectSer.setAttribute("type","number");
+                AddMoreSelectSer.setAttribute("class","selectSers");
+                AddMoreSelectSer.setAttribute("min","1");
+                AddMoreSelectSer.setAttribute("max","5");
+                document.querySelector(".sameSelect").append(createAddDish);
+                document.querySelector(".sameSelect").append(AddMoreSelectSer);
+            }
         }else{
-            alert("not enough item!!");
-        }
-        if(arrayLengthBlankArray > 1){
-            let AddMoreSelectSer = document.createElement("input");
-            AddMoreSelectSer.setAttribute("type","number");
-            AddMoreSelectSer.setAttribute("class","selectSers");
-            AddMoreSelectSer.setAttribute("min","1");
-            AddMoreSelectSer.setAttribute("max","5");
-            document.querySelector(".sameSelect").append(createAddDish);
-            document.querySelector(".sameSelect").append(AddMoreSelectSer);
+            alert("Please select Number of Servings");
         }
     }
 });
@@ -328,7 +344,7 @@ document.querySelector(".thirdNextBtn").addEventListener("click", () => {
     document.querySelector(".putNoPeople").innerHTML = noPeople.value;
     document.querySelector(".putRest").innerHTML = selectRest.value;
     checkLastClass = document.getElementsByClassName("checkLastClass");
-    let selectSers = document.querySelectorAll(".selectSers");
+    var selectSers = document.querySelectorAll(".selectSers");
     let putDishName = document.querySelectorAll(".putDishName");
     let putDishNo = document.querySelectorAll(".putDishNo");
     for(var i=0;i < checkLastClass.length;i++){
@@ -343,6 +359,8 @@ document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
     second_page.classList.remove("hide");
     third_span.classList.remove("color_class");
     second_span.classList.add("color_class");
+    dishBlankArray.splice(0,dishBlankArray.length);
+
 });
 // last page
 document.querySelector(".lastNextBtn").addEventListener("click", () => {

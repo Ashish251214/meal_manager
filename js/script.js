@@ -360,7 +360,14 @@ document.querySelector(".thirdPrevBtn").addEventListener("click", () => {
     third_span.classList.remove("color_class");
     second_span.classList.add("color_class");
     dishBlankArray.splice(0,dishBlankArray.length);
-
+    var rmvElmt = document.querySelectorAll(".checkLastClass");
+    var rmvSer = document.querySelectorAll(".selectSers");
+    for(var m = 1; m < rmvElmt.length; m++){
+        if(rmvElmt[m] != 1){
+            rmvSer[m].remove();
+            rmvElmt[m].remove();
+        }
+    }
 });
 // last page
 document.querySelector(".lastNextBtn").addEventListener("click", () => {

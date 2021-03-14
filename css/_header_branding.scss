@@ -1,12 +1,11 @@
 // font-family: 'Rancho', cursive;
-// Regards to inform you that, i can not continue my service further due to my personal reason. kindly releave me as early as possible and please hand over my cheque and bond.
-// Thanks and Regards...
-// Ashish Kumar 
 .header_branding{
     background: url(../images/home_banner.jpg);
-    @include background();
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     .social_header{
-        background-color: $primary;
+        background-color: $primary_light;
         font-family: 'Merriweather Sans', sans-serif;
         font-weight: normal;
         padding: 6px 0;
@@ -46,12 +45,17 @@
     }
     // navigation_bar
     .navigation_bar{
+        padding: 1rem 0;
         .flexible{
             display: flex;
             justify-content: center;
             align-items: center;
             .navigation_bar-logo{
                 flex: 1;
+                & img{
+                    width: 100%;
+                    max-width: 80px;
+                }
             }
             nav{
                 flex: 5;
@@ -60,6 +64,62 @@
                     justify-content: space-between;
                     align-items: center;
                     list-style: none;
+                    margin-bottom: 0;
+                    & li a{
+                        display: block;
+                        text-transform: uppercase;
+                        color: var(--light);
+                        padding: 5px 30px;
+                        text-decoration: none;
+                        border-bottom: 4px solid transparent;
+                        &:hover{
+                            border-bottom: 4px solid $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .home_banner{
+        padding-bottom: 10rem;
+        & img{
+            width: 100%;
+        }
+        div{
+            padding: 20px 0;
+            h1, h2{
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: var(--light);
+                font-size: 6rem;
+            }
+            h2{
+                position: relative;
+                font-family: 'Rancho', cursive;
+                line-height: 0;
+                margin: 2rem 0;
+                span{
+                    padding: 0 30px;
+                    font-size: 2.3rem
+                }
+                &::after{
+                    content: '';
+                    height: 2px;
+                    width: 26%;
+                    background-color: var(--light);
+                    position: absolute;
+                    top: 16px;
+                    right: 18px;
+                }
+                &::before{
+                    content: '';
+                    height: 2px;
+                    width: 26%;
+                    background-color: var(--light);
+                    position: absolute;
+                    top: 16px;
+                    left: 18px;
                 }
             }
         }
